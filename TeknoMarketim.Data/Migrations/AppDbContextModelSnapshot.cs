@@ -460,14 +460,9 @@ namespace TeknoMarketim.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId1")
-                        .HasColumnType("int");
-
                     b.HasKey("CategoryId", "ProductId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductId1");
 
                     b.ToTable("ProductCategory");
                 });
@@ -567,16 +562,10 @@ namespace TeknoMarketim.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TeknoMarketim.Entities.Product", null)
+                    b.HasOne("TeknoMarketim.Entities.Product", "Product")
                         .WithMany("ProductCategories")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TeknoMarketim.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");

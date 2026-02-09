@@ -34,13 +34,13 @@ public class AppDbContext:DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+
 
         //modelBuilder.ApplyConfiguration(new CustomerAddressConfiguration());
 
-
+        //modelBuilder.Entity<ProductCategory>().HasKey(x => new { x.CategoryId, x.ProductId });
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-        modelBuilder.Entity<ProductCategory>().HasKey(x => new { x.CategoryId, x.ProductId });
+        
 
 
     }

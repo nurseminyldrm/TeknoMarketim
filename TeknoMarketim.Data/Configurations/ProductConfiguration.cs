@@ -27,10 +27,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(e => e.ShowOnPageAsPopular).HasDefaultValue(false);
         builder.Property(e => e.ShowOnPageAsSpecialOffer).HasDefaultValue(false);
 
-        //ilişki : Product - ProductCategory (1-N)
-        builder.HasMany(p=>p.ProductCategories)
-            .WithOne()
-            .HasForeignKey(pc => pc.ProductId)
-            .OnDelete(DeleteBehavior.Cascade);
+        
     }
 }

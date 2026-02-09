@@ -16,10 +16,7 @@ namespace TeknoMarketim.Data.Configurations
             builder.Property(e => e.Name).IsRequired().HasMaxLength(100);
             builder.Property(e => e.Status).IsRequired().HasDefaultValue(true);
 
-            builder.HasMany(c => c.ProductCategories)
-                .WithOne()
-                .HasForeignKey(pc => pc.CategoryId)
-                .OnDelete(DeleteBehavior.Cascade);
+          
         }
     }
 }

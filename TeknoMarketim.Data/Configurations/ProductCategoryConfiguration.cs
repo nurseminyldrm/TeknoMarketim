@@ -23,7 +23,7 @@ namespace TeknoMarketim.Data.Configurations
             builder.HasOne(pc => pc.Product)
                 .WithMany(p => p.ProductCategories)
                 .HasForeignKey(pc => pc.ProductId)
-                .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+                .OnDelete(deleteBehavior: DeleteBehavior.NoAction);
         }
     }
 }
