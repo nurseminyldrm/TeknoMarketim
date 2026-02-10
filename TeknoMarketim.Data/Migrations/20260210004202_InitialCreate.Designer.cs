@@ -11,7 +11,7 @@ using TeknoMarketim.Data.Context;
 namespace TeknoMarketim.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260209163129_InitialCreate")]
+    [Migration("20260210004202_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -6,8 +6,9 @@ using TeknoMarketim.Entities;
 
 namespace TeknoMarketim.Data.Concrete;
 
-public class EfCampaignRepository:EfGenericRepositoryBase<Campaign,AppDbContext>,ICampaignRepository
+public class EfCampaignRepository : EfGenericRepositoryBase<Campaign, AppDbContext>, ICampaignRepository
 {
-
-
+    public EfCampaignRepository(AppDbContext _context) : base(_context)
+    {
+    }
 }

@@ -6,7 +6,9 @@ using TeknoMarketim.Entities;
 
 namespace TeknoMarketim.Data.Concrete;
 
-public class EfContactRepository:EfGenericRepositoryBase<Contact,AppDbContext>,IContactRepository
+public class EfContactRepository : EfGenericRepositoryBase<Contact, AppDbContext>, IContactRepository
 {
-
+    public EfContactRepository(AppDbContext _context) : base(_context)
+    {
+    }
 }

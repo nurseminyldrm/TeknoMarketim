@@ -16,5 +16,7 @@ public interface IGenericRepository<T>
     void Add(T entity);
     void Update(T entity);
     void Delete(T entity);
+    bool Exist(Expression<Func<T, bool>> predicate);    
+    IQueryable<T> Query();
 
 }

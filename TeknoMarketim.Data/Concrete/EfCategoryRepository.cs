@@ -5,15 +5,17 @@ using TeknoMarketim.Entities;
 
 namespace TeknoMarketim.Data.Concrete
 {
-    public class EfCategoryRepository : EfGenericRepositoryBase<Category, AppDbContext>, ICategoryRepository
+    public class EfCategoryRepository(AppDbContext _context) : EfGenericRepositoryBase<Category, AppDbContext>(_context), ICategoryRepository
     {
+        private readonly AppDbContext _context = _context;
+
+
         public Category GetByIdWithProducts(int id)
         {
-            using(var context = new AppDbContext())
-            {
-                return context.Categories.Where(x => x.Id == id).Include(x => x.ProductCategories)
-                    .ThenInclude(x => x.Product).FirstOrDefault();
-            }
+            
+                return _context.Categories.Include(c => c.ProductCategories)
+                    .ThenInclude(pc => pc.Product).SingleOrDefault(c => c.Id == id);
+            
         }
     }
 }
