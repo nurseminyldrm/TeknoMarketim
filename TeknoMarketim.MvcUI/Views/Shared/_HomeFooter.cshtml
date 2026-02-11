@@ -1,0 +1,76 @@
+﻿﻿
+<div class="footer">
+    <div class="container">
+        <div class="w3_footer_grids">
+            @* İletişim Bilgileri *@
+            <div class="col-md-3 w3_footer_grid">
+                <h3>İletişim</h3>
+                <ul class="address">
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Sivas / Türkiye</li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:destek@teknomarketim.com">destek@teknomarketim.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>(+90) 5xx xxx xx xx</li>
+                </ul>
+            </div>
+
+            @* Kurumsal Bilgiler *@
+            <div class="col-md-3 w3_footer_grid">
+                <h3>Bilgilendirme</h3>
+                <ul class="info">
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/HomePage/AboutUs">Hakkımızda</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Contact/Create">Bize Ulaşın</a></li>
+                </ul>
+            </div>
+
+            @* Teknoloji Kategorileri *@
+            <div class="col-md-3 w3_footer_grid">
+                <h3>Kategoriler</h3>
+                <ul class="info">
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Product/Index?cat=arduino">Arduino & Robotik</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Product/Index?cat=3d">3D Yazıcı & Filament</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Product/Index?cat=sensor">Sensörler & Modüller</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Product/Index?cat=computer">Bilgisayar Bileşenleri</a></li>
+                </ul>
+            </div>
+
+            @* Kullanıcı Paneli *@
+            <div class="col-md-3 w3_footer_grid">
+                <h3>Hesabım</h3>
+                <ul class="info">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Account/Login">Giriş Yap</a></li>
+                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Account/Register">Kayıt Ol</a></li>
+                    }
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Cart/Index">Sepetim</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Order/GetOrders">Siparişlerim</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    <div class="footer-copy">
+        <div class="container">
+            <p>@DateTime.Now.Year © TeknoMarketim. | Developed by <a href="#">Nursemin Yıldırım</a></p>
+        </div>
+    </div>
+
+</div>
+<div class="footer-botm">
+    <div class="container">
+        @* Sosyal Medya İkonları *@
+        <div class="w3layouts-foot">
+            <ul>
+                <li><a href="https://facebook.com/teknomarketim" class="w3_agile_facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://twitter.com/teknomarketim" class="agile_twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://linkedin.com/in/nursemin-yıldırım-767024333" class="w3_agile_linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="https://instagram.com/teknomarketim" class="w3_agile_instagram"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        @* Ödeme Yöntemleri Görseli *@
+        <div class="payment-w3ls">
+            <img src="~/home/images/card.png" alt="Ödeme Yöntemleri" class="img-responsive">
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

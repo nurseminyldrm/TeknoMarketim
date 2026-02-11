@@ -1,0 +1,218 @@
+﻿<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/Admin/Dashboard" class="brand-link">
+        <img src=".logo" alt="TeknoMarketim" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light ml-1">TeknoMarketim</span>
+    </a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header ml-2">YÖNETİM PANELİ</li>
+                <li class="nav-item">
+                    <a href="/Admin/Dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+
+                @* KATEGORİ YÖNETİMİ *@
+                <li class="nav-item">
+                    <a href="/Category/Index" class="nav-link">
+                        <i class="nav-icon fas fa-microchip"></i> @* İkon değişti: Mikroçip *@
+                        <p>Kategoriler</p>
+                    </a>
+                </li>
+
+                @* ÜRÜN YÖNETİMİ *@
+                <li class="nav-item">
+                    <a href="/Product/Index" class="nav-link">
+                        <i class="nav-icon fas fa-laptop-code"></i> @* İkon değişti: Teknoloji/Kod *@
+                        <p>Ürün Yönetimi</p>
+                    </a>
+                </li>
+
+                @* YETKİLENDİRME VE KULLANICILAR *@
+                <li class="nav-item">
+                    <a href="/AdminRole/Index" class="nav-link">
+                        <i class="nav-icon fas fa-user-shield"></i>
+                        <p>Rol Yönetimi</p>
+                    </a>
+                </li>
+
+                @* MÜŞTERİ *@
+                <li class="nav-item">
+                    <a href="/User/Index" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Müşteriler</p>
+                    </a>
+                </li>
+
+                @* SİPARİŞ VE DUYURU *@
+                <li class="nav-item">
+                    <a href="/Order/Index" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-basket"></i>
+                        <p>Siparişler</p>
+                    </a>
+                </li>
+                
+                @*<li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>
+                                Orders
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pending</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Unpaid</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Cargo</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Returned From Cargo</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Completed</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+                @* DUYURULAR *@ 
+                <li class="nav-item">
+                    <a href="/Admin/Campaigns" class="nav-link">
+                        <i class="nav-icon fas fa-bullhorn"></i> @* İkon değişti: Hoparlör/Duyuru *@
+                        <p>Kampanyalar & Duyurular</p>
+                    </a>
+                </li>
+
+                @* YARDIM MESAJLARI *@
+                <li class="nav-item">
+                    <a href="/Contact/Index" class="nav-link">
+                        <i class="nav-icon far fa-comment-dots"></i>
+                        <p>Destek Mesajları</p>
+                    </a>
+                </li>
+
+                @* SİTEYE DÖNÜŞ *@
+                <li class="nav-item">
+                    <a href="/HomePage/Index" class="nav-link bg-info">
+                        @* Dikkat çekmesi için renk eklendi *@
+                        <i class="nav-icon fas fa-external-link-alt"></i>
+                        <p>Mağazaya Git</p>
+                    </a>
+                </li>
+
+                <li class="nav-header">İSTATİSTİK & GRAFİKLER</li>
+
+                @* İSTATİSTİKLER *@
+                <li class="nav-item">
+                    <a href="/Statistic/Index" class="nav-link">
+                        <i class="nav-icon fas fa-chart-bar"></i>
+                        <p>Satış Analizi</p>
+                    </a>
+                </li>
+
+                @* GRAFİKLER (Açılır Menü) *@
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-project-diagram"></i>
+                        <p>
+                            Veri Grafikleri
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/Graphic/PieChart" class="nav-link">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Kategori Dağılımı</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Graphic/LineChart" class="nav-link">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Satış Trendi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Graphic/ColumnChart" class="nav-link">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Stok Durumu</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                @*<li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                            <p>
+                                Invoice
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Invoice</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Print Invoice</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-dollar-sign"></i>
+                            <p>
+                                Sales
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sales</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Print Sales</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+            </ul>
+        </nav>
+    </div>
+</aside>
