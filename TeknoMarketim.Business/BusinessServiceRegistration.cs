@@ -1,11 +1,15 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TeknoMarketim.Business.Abstract;
 using TeknoMarketim.Business.Concrete;
 using TeknoMarketim.Data.Abstract;
 using TeknoMarketim.Data.Concrete;
+using TeknoMarketim.Data.Context;
+using TeknoMarketim.Entities;
 
 namespace TeknoMarketim.Business
 {
@@ -13,7 +17,27 @@ namespace TeknoMarketim.Business
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddScoped(typeof(IGenericRepository<>), typeof(EfGenericRepositoryBase<,>));
+            services.AddDbContext<AppDbContext>(options => 
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            
+            
+            // services.AddScoped(typeof(IGenericRepository<>), typeof(EfGenericRepositoryBase<,>));
+
+
+            var entityAssembly = typeof(Product).Assembly;
+            var entityTypes = entityAssembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract
+                                                                            && t.Namespace != null
+                                                                            &&(t.Namespace.Contains("Entities") || t.Namespace.Contains("Entities")));                                          
+
+            foreach (var entityType in entityTypes)
+            {
+                var repositoryInterface = typeof(IGenericRepository<>).MakeGenericType(entityType);
+                var repositoryImplementation = typeof(EfGenericRepositoryBase<,>)
+                    .MakeGenericType(entityType, typeof(AppDbContext));
+                services.AddScoped(repositoryInterface, repositoryImplementation);
+            }
+            Console.WriteLine($"{entityTypes.Count()} Generic Register");
+
 
             services.AddScoped<ICategoryRepository, EfCategoryRepository>();
             services.AddScoped<IProductRepository, EfProductRepository>();
@@ -25,7 +49,7 @@ namespace TeknoMarketim.Business
             services.AddScoped<IOrderItemRepository, EfOrderItemRepository>();
             services.AddScoped<ICustomerAddressRepository, EfCustomerAddressRepository>();
             services.AddScoped<ICustomerCardRepository, EfCustomerCardRepository>();
-            services.AddScoped<ICartRepository, EfCartRepository>();
+            services.AddScoped<ICartRepository, EfCartRepository>(); 
 
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
