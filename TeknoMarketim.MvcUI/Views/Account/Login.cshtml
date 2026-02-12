@@ -1,0 +1,42 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+@section Scrpts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="login">
+    <div class="container">
+        <h2>Login Form</h2>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="text-danger">@ViewBag.ErrorMessage</div>
+        }
+
+    <div class="Login-form-grids animated wow slideInUp" data-now-delay=".5s">
+        <form asp-controller="Account" asp-action="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl"/>
+
+                <input asp-for="Email" value="@Model.Email" class="form-control" placeholder="E-posta Adresiniz..." />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <input asp-for="Password" value="@Model.Password" class="form-control" placeholder="Şifreniz..." />
+                <span asp-validation-for="Password"></span>
+                
+                <input type="submit" value="Giriş Yap" />
+        </form>
+    </div>
+
+        <h4>Yeni misiniz?</h4>
+        <p>
+            <a href="/Account/Register">Buradan Kayıt Olun</a>(or) goto back to <a href="/HomePage/Index">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+            <a href="/HomePage/Index">Anasayfaya Dön <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+        </p>
+    </div>
+
+</div>

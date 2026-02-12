@@ -24,13 +24,13 @@ public class AppDbContext:DbContext
     }
     */
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TeknoMarketimDB;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
-    }
+    } */
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

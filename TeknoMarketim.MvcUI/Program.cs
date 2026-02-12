@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TeknoMarketim.Business;
+using TeknoMarketim.Data.Context;
 using TeknoMarketim.MvcUI.EmailServices;
 using TeknoMarketim.MvcUI.Identity;
 
@@ -19,7 +20,10 @@ namespace TeknoMarketim.MvcUI
             builder.Services.AddControllersWithViews();
             builder.Services.AddBusinessServices(builder.Configuration);
 
-            builder.Services.AddDbContext<ApplicationIdentityDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+            builder.Services.AddDbContext<ApplicationIdentityDbContext>(option => 
+            option.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+            builder.Services.AddDbContext<AppDbContext>(options => 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationIdentityDbContext>()

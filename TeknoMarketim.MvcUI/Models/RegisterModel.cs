@@ -26,5 +26,7 @@ namespace TeknoMarketim.MvcUI.Models
         
         public string PhoneNumber { get; set; }
         public DateTime BirthDay { get; set; }
+        [Display(Name = "Profile Image")]
+        public IFormFile Image { get; set; }
     }
 }
