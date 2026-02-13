@@ -11,8 +11,6 @@ public class EfProductRepository(AppDbContext _context) : EfGenericRepositoryBas
 {
     private readonly AppDbContext _context= _context;
 
-    
-
 
     public Product GetByIdWithCategories(int id)
     {

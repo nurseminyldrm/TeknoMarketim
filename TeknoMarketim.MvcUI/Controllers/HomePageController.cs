@@ -22,6 +22,31 @@ namespace TeknoMarketim.MvcUI.Controllers
             });
         }
 
+        public PartialViewResult Slider()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult HomeCategory()
+        {
+            return PartialView();
+        }
+
+        public IActionResult ProductList(string category, int page = 1)
+        {
+            const int pageSize = 9;
+            return View(new ProductListModel
+            {
+                PageInfo = new PageInfo
+                {
+                    TotalItems = _productService.GetCountByCategory(category),
+                    CurrentPage = page,
+                    ItemPerPage = pageSize,
+                    CurrentCategory = category
+                },
+                Products = _productService.GetProductsByCategory(category, page, pageSize)
+            });
+        }
 
     }
 }

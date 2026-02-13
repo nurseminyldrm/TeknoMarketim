@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Authorization;
 using TeknoMarketim.Business.Abstract;
 using TeknoMarketim.Entities;
 using TeknoMarketim.MvcUI.Models.ProductModel;
@@ -31,8 +31,9 @@ namespace TeknoMarketim.MvcUI.Controllers
             return View(new ProductModel());
         }
         [HttpPost]
-        public async Task<IActionResult> Create(ProductModel model, IFormFile formFile)
+        public async Task<IActionResult> Create(ProductModel model, IFormFile ImageFile)
         {
+            ModelState.Remove("ImageUrl");
             if (ModelState.IsValid)
             {
                 var entity = new Product()
@@ -45,13 +46,13 @@ namespace TeknoMarketim.MvcUI.Controllers
                     StockQuantity = model.StockQuantity,
                     isActive = model.Status = true
                 };
-                if (formFile != null)
+                if (ImageFile != null)
                 {
-                    entity.ImageUrl = formFile.FileName;
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", formFile.FileName);
+                    entity.ImageUrl = ImageFile.FileName;
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", ImageFile.FileName);
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        await formFile.CopyToAsync(stream);
+                        await ImageFile.CopyToAsync(stream);
                     }
                 }
                 if (_productService.Add(entity))

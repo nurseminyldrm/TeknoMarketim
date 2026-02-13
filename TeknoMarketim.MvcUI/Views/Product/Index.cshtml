@@ -18,7 +18,7 @@
 
     @if (Model.Products.Count > 0)
     {
-        <table id="tb12" class="mt-3 table table-bordered table-striped">
+        <table id="tb12" class="mt-3 table table-bordered table-striped w-100">
 
             <thead class="thead-dark">
                 <tr>
@@ -98,6 +98,11 @@
 
 <script>
 
-    $('tbl2').dataTable({});
+    $('#tb12').dataTable({
+        "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Turkish.json" // Tabloyu Türkçe yapar
+            }
+        });
+    });
 
 </script>

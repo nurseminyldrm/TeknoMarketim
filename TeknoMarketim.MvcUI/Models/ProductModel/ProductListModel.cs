@@ -7,7 +7,7 @@ namespace TeknoMarketim.MvcUI.Models.ProductModel
         public int TotalItems { get; set; }
         public int ItemPerPage { get; set; }
         public int CurrentPage { get; set; }
-        public int CurrentCategory { get; set; }
+        public string CurrentCategory { get; set; }
 
         public int TotalPage => (int)Math.Ceiling((decimal)TotalItems / ItemPerPage);
 
