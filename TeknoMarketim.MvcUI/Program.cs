@@ -31,16 +31,22 @@ namespace TeknoMarketim.MvcUI
 
             builder.Services.Configure<IdentityOptions>(options =>
             {
+                //password settings
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequiredLength = 3;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
 
+                //lockout settings
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
 
+                //user settings
+                options.User.RequireUniqueEmail = true;
+
+                //SignIn settings
                 options.SignIn.RequireConfirmedEmail = true;
                 options.SignIn.RequireConfirmedPhoneNumber = true;
 
@@ -136,12 +142,12 @@ namespace TeknoMarketim.MvcUI
                 );
 
             app.MapControllerRoute(
-                name:"Default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                name:"default",
+                pattern: "{controller=HomePage}/{action=Index}/{id?}")
                 .WithStaticAssets();
-
-
             app.Run();
         }
+
+
     }
 }

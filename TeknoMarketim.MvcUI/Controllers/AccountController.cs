@@ -77,8 +77,11 @@ namespace TeknoMarketim.MvcUI.Controllers
                 FullName = register.FullName,
                 PhoneNumber = register.PhoneNumber,
                 Image= imagePath,
-                Birthday=register.BirthDay
+                Birthday=register.BirthDay,
+                EmailConfirmed=true,
+                PhoneNumberConfirmed=true
             };
+
             var result = await _userManager.CreateAsync(user,register.Password);
             if (result.Succeeded)
             {
@@ -108,6 +111,7 @@ namespace TeknoMarketim.MvcUI.Controllers
 
         public IActionResult Login(string ReturnUrl = null)
         {
+            ReturnUrl ??= Request.Headers["Referer"].ToString();
             return View(new LoginModel
             {
                 ReturnUrl = ReturnUrl

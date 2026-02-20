@@ -1,0 +1,103 @@
+﻿<div class="brands">
+    <div class="container">
+        <h3>Öne Çıkan Kategoriler</h3>
+        <div class="brands-agile">
+            @* Kategori 1: Arduino *@
+            <div class="col-md-2 w3layouts-brand">
+                <div class="brands-w3l">
+                    <p>
+                        <a asp-controller="HomePage" asp-action="ProductList" asp-route-id="1">
+                            <i class="fas fa-microchip"></i><br>Arduino
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            @* Kategori 2: Raspberry Pi *@
+            <div class="col-md-2 w3layouts-brand">
+                <div class="brands-w3l">
+                    <p>
+                        <a asp-controller="HomePage" asp-action="ProductList" asp-route-id="2">
+                            <i class="fab fa-raspberry-pi"></i><br>Raspberry Pi
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            @* Kategori 3: Sensörler *@
+            <div class="col-md-2 w3layouts-brand">
+                <div class="brands-w3l">
+                    <p>
+                        <a asp-controller="HomePage" asp-action="ProductList" asp-route-id="3">
+                            <i class="fas fa-rss"></i><br>Sensörler
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            @* Kategori 4: Motorlar *@
+            <div class="col-md-2 w3layouts-brand">
+                <div class="brands-w3l">
+                    <p>
+                        <a asp-controller="HomePage" asp-action="ProductList" asp-route-id="4">
+                            <i class="fas fa-cogs"></i><br>Motorlar
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            @* Kategori 5: 3D Yazıcı *@
+            <div class="col-md-2 w3layouts-brand">
+                <div class="brands-w3l">
+                    <p>
+                        <a asp-controller="HomePage" asp-action="ProductList" asp-route-id="5">
+                            <i class="fas fa-print"></i><br>3D Yazıcı
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            @* Kategori 6: Robot Kitleri *@
+            <div class="col-md-2 w3layouts-brand">
+                <div class="brands-w3l">
+                    <p>
+                        <a asp-controller="HomePage" asp-action="ProductList" asp-route-id="6">
+                            <i class="fas fa-robot"></i><br>Robot Kitleri
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    
+    .brands-w3l {
+        transition: all 0.3s ease;
+        border: 1px solid #eee;
+        padding: 15px 5px;
+        text-align: center;
+    }
+
+        .brands-w3l:hover {
+            background-color: #004284; 
+            border-color: #004284;
+        }
+
+            .brands-w3l:hover a {
+                color: #fff !important;
+            }
+
+        .brands-w3l i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #004284;
+        }
+
+        .brands-w3l:hover i {
+            color: #fff;
+        }
+</style>

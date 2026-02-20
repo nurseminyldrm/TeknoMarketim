@@ -62,5 +62,65 @@ namespace TeknoMarketim.MvcUI.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var entity = _productService.GetByIdWithCategories((int)id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+            var model = new ProductModel()
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Brand = entity.Brand,
+                Price = entity.Price,
+                DiscountedPrice = entity.DiscountedPrice,
+                StockQuantity = entity.StockQuantity,
+                ImageUrl = entity.ImageUrl,
+                SelectedCategories = entity.ProductCategories.Select(i => i.Category).ToList()
+            };
+            ViewBag.Categories = _categoryService.GetAll();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ProductModel model, IFormFile file, int[] categoryIds)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = _productService.GetById(model.Id);
+                if(entity == null)
+                {
+                    return NotFound();
+                }
+
+                entity.Name = model.Name;
+                entity.Brand = model.Brand;
+                entity.Price = model.Price;
+                entity.DiscountedPrice = model.DiscountedPrice;
+                entity.StockQuantity = model.StockQuantity;
+                entity.Description = model.Description;
+                if (file!=null)
+                {
+                    entity.ImageUrl = file.FileName;
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
+                _productService.Update(entity, categoryIds);
+                return RedirectToAction("Index");
+            }
+            ViewBag.Categories = _categoryService.GetAll();
+            return View(model);
+        }
     }
 }
