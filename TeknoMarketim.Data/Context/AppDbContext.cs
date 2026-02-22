@@ -28,7 +28,8 @@ public class AppDbContext:DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TeknoMarketimDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TeknoMarketimDB;" +
+                "Trusted_Connection=True;MultipleActiveResultSets=true");
         }
     } */
 

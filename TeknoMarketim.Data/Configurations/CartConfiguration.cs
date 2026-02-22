@@ -13,15 +13,19 @@ namespace TeknoMarketim.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
+            builder.Property(c => c.Id).ValueGeneratedOnAdd();
+
             builder.Property(c => c.UserId)
                 .IsRequired()
                 .HasMaxLength(50);
 
+            //ilişki cart=> cartıtems(1-N)
             builder.HasMany(c=>c.CartItems)
                 .WithOne(ci=>ci.Cart)
                 .HasForeignKey(ci => ci.CartId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            //İLİŞKİ cartıtem=>wishlist
             builder.HasMany(c => c.WishLists)
                 .WithOne()
                 .HasForeignKey("CartId")

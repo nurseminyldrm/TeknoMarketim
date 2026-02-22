@@ -22,11 +22,15 @@ namespace TeknoMarketim.MvcUI.Controllers
         [HttpGet]
         public IActionResult AdminLogin(string returnUrl = null)
         {
-            return View(new LoginModel
+            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                ReturnUrl = returnUrl,
-
-            });
+                returnUrl = Url.Action("Dashboard", "Admin");
+            }
+            var model = new LoginModel()
+            {
+                ReturnUrl = returnUrl
+            };
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> AdminLogin(LoginModel model)
@@ -39,7 +43,7 @@ namespace TeknoMarketim.MvcUI.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", "No user has been created with this e-mail address before");
-
+                return View(model);
             }
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
@@ -50,7 +54,12 @@ namespace TeknoMarketim.MvcUI.Controllers
             var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
             if (result.Succeeded)
             {
-                return Redirect(model.ReturnUrl ?? "~/Admin/DashBoard");
+                if(string.IsNullOrEmpty(model.ReturnUrl) || !Url.IsLocalUrl(model.ReturnUrl))
+                {
+                    return Redirect(model.ReturnUrl);
+                }
+                return RedirectToAction("Dashboard", "Admin");
+
             }
             ModelState.AddModelError("", "your password and e-mail address is incorrect");
 

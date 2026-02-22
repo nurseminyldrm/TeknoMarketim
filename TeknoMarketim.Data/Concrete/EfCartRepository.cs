@@ -32,8 +32,10 @@ public class EfCartRepository(AppDbContext _context) : EfGenericRepositoryBase<C
 
     public Cart GetByUserId(string userId)
     {
-        
-            return _context.Carts.Include(i => i.CartItems).ThenInclude(i => i.Product).FirstOrDefault(i => i.UserId == userId);
+        var x = _context.Carts.Include(i => i.CartItems).ThenInclude(i => i.Product).
+            FirstOrDefault(i => i.UserId == userId);
+        return _context.Carts.Include(i => i.CartItems).ThenInclude(i => i.Product).
+            FirstOrDefault(i => i.UserId == userId);
         
     }
 }

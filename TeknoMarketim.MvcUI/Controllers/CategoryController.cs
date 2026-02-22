@@ -15,13 +15,13 @@ namespace TeknoMarketim.MvcUI.Controllers
         }
 
         //index create update delete => category sizde
-        public IActionResult Index()
+        /* public IActionResult Index()
         {
             return View(new CategoryListModel
             {
 
 
             });
-        }
+        } */
     }
 }

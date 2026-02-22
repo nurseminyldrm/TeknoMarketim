@@ -66,7 +66,7 @@ public class EfGenericRepositoryBase<T, TContext>(TContext _context): IGenericRe
             throw new ArgumentNullException(nameof(entity), "Entity cannot be null!!!");
         }
         _dbSet.Attach(entity);
-        context.Entry(entity).State = EntityState.Modified;
+        _context.Entry(entity).State = EntityState.Modified;
         context.SaveChanges();
     }
 }

@@ -20,25 +20,30 @@ public class CartManager : ICartService
     public void AddToCart(string userId, int productId, int quantity)
     {
         var cart=GetCartByUserId(userId);
-        if (cart != null)
+        if (cart == null)
         {
-            var index = cart.CartItems.FindIndex(i => i.ProductId == productId);
-            if (index < 0)
-            {
-                cart.CartItems.Add(new CartItem
-                {
-                    ProductId = productId,
-                    Quantity = quantity,
-                    CartId = cart.Id
-                });
-            }
-            else
-            {
-                cart.CartItems[index].Quantity += quantity;
-            }
-                _cartRepository.Update(cart);   
+            cart = InitializeCart(userId);
+            _cartRepository.Add(cart);   
         }
-
+        if(cart.CartItems == null)
+        {
+            cart.CartItems = new List<CartItem>();
+        }
+        var existingCartItem = cart.CartItems.FirstOrDefault(i => i.ProductId == productId);
+        if(existingCartItem == null)
+        {
+            cart.CartItems.Add(new CartItem
+            {
+                ProductId = productId,
+                Quantity = quantity,
+                CartId = cart.Id
+            });
+        }
+        else
+        {
+            existingCartItem.Quantity += quantity;
+        }
+        _cartRepository.Update(cart);
 
     }
     
@@ -100,11 +105,14 @@ public class CartManager : ICartService
         return _cartRepository.GetByUserId(userId);
     }
 
-    public void InitializeCart(string userId)
+    public Cart InitializeCart(string userId)
     {
-        _cartRepository.Add(new Cart
+        var cart = new Cart
         {
-            UserId = userId
-        });
+            UserId = userId,
+            CartItems = new List<CartItem>(),
+        };
+        _cartRepository.Add(cart);
+        return cart;
     }
 }

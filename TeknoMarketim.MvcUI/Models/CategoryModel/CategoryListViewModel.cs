@@ -1,4 +1,6 @@
-﻿namespace TeknoMarketim.MvcUI.Models.CategoryModel
+﻿using TeknoMarketim.Entities;
+
+namespace TeknoMarketim.MvcUI.Models.CategoryModel
 {
     public class CategoryListViewModel
     {
