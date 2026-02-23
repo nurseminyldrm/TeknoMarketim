@@ -1,4 +1,4 @@
-﻿namespace TeknoMarketim.MvcUI.Models
+﻿namespace TeknoMarketim.MvcUI.Models.OrderModel
 {
     public class OrderModel
     {

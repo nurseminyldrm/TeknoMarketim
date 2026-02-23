@@ -29,6 +29,7 @@ namespace TeknoMarketim.MvcUI.Models
     public class OrderItemModel
     {
         public int OrderItemId { get; set; }
+        public string Name {  get; set; }
         public decimal Price { get; set; }
         public decimal DiscountedPrice { get; set; }
         public int Quantity { get; set; }
