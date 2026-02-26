@@ -14,8 +14,8 @@ namespace TeknoMarketim.MvcUI.Payments
         {
             _option = new Options
             {
-                ApiKey = "BURAYA_API_ANAHTARINIZI_YAZIN",
-                SecretKey = "BURAYA_SECRET_KEY_YAZIN",
+                ApiKey = "sandbox-K48OPC7Ry7LNWilmmLFk0Y0JtsowmNVy",
+                SecretKey = "sandbox-pnyaxeXrCOj8cOhTd6QMHdq4jGdCQZ0T",
                 BaseUrl = isSandbox ? "https://sandbox-api.iyzipay.com" : "https://api.iyzipay.com"
 
             };

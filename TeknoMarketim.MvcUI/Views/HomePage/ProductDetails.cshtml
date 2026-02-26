@@ -13,7 +13,7 @@
                     <input type="hidden" name="productId" value="@Model.Product.Id" />
                     <button type="submit"><i class="fas fa-heart" style="color:red"></i></button>
                 </form>
-                <img id="example" src="~/img/@Model.Product.ImageUrl" alt=" " class="img-responsive">
+                <img id="example" src="@Model.Product.ImageUrl" alt="@Model.Product.Name" class="img-responsive">
             </div>
 
             <div class="col-md-8 agileinfo_single_right">

@@ -149,7 +149,7 @@ namespace TeknoMarketim.MvcUI.Controllers
                 Address = model.Address,
                 City = model.City,
                 Phone = model.Phone,
-                Email = model.Email??user.Email
+                Email = model.Email??user.Email?.ToString(),
             };
 
             var iyzicoService = new IyzicoService();

@@ -26,7 +26,7 @@
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Brand</label>
+            <label class="col-md-2 col-form-label">Marka</label>
             <div class="col-md-10">
                 <input asp-for="Brand" value="@Model.Brand" class="form-control" />
                 <span asp-validation-for="Brand" class="text-danger"></span>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Image</label>
+            <label class="col-md-2 col-form-label">Görsel</label>
             <div class="col-md-10">
                 <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
                 <input type="file" name="file" />
@@ -43,28 +43,28 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Description</label>
+            <label class="col-md-2 col-form-label">Açıklama</label>
             <div class="col-md-10">
                 <input asp-for="Description" value="@Model.Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">StockQuantity</label>
+            <label class="col-md-2 col-form-label">Stok Miktarı</label>
             <div class="col-md-10">
                 <input asp-for="StockQuantity" value="@Model.StockQuantity" class="form-control" />
                 <span asp-validation-for="StockQuantity" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Price</label>
+            <label class="col-md-2 col-form-label">Fiyat</label>
             <div class="col-md-10">
                 <input asp-for="Price" value="@Model.Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">DiscountedPrice</label>
+            <label class="col-md-2 col-form-label">Kampanya Fiyatı</label>
             <div class="col-md-10">
                 <input asp-for="DiscountedPrice" value="@Model.DiscountedPrice" class="form-control" />
                 <span asp-validation-for="DiscountedPrice" class="text-danger"></span>
@@ -72,7 +72,7 @@
         </div>
         <div class="form-group row">
             <div class="col-md-10 offset-md-2">
-                <button type="submit" value="Create" class="btn btn-primary" style="width:100px;">Create</button>
+                <button type="submit" value="Create" class="btn btn-primary" style="width:100px;">Oluştur</button>
                 <a asp-action="Index" asp-controller="Product" class="btn btn-warning" value="Cancel" style="width:100px;">Cancel</a>
             </div>
 

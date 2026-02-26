@@ -80,6 +80,13 @@ namespace TeknoMarketim.MvcUI
                     )
             );
 
+            builder.Services.AddHttpClient("ApiGateway", opt =>
+            {
+                // ÖNEMLÝ: Buradaki adresi, API projen çalýþtýðýnda 
+                // tarayýcýda yazan adresle (port numarasýyla) deðiþtir!
+                opt.BaseAddress = new Uri("https://localhost:7287/api/");
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

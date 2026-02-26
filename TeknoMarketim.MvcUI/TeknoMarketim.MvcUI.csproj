@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ExampleCompanyApp\ExampleCompanyApp.Core\ExampleCompanyApp.Core.csproj" />
     <ProjectReference Include="..\TeknoMarketim.Business\TeknoMarketim.Business.csproj" />
     <ProjectReference Include="..\TeknoMarketim.Data\TeknoMarketim.Data.csproj" />
   </ItemGroup>

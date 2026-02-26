@@ -64,7 +64,7 @@ namespace TeknoMarketim.MvcUI.Controllers
                 using(var fileStream =new FileStream(filePath,FileMode.Create)){
                     await register.Image.CopyToAsync(fileStream);
                 }
-                imagePath = $"images/users{fileName}";
+                imagePath = $"images/users/{fileName}";
 
             }
             
@@ -150,7 +150,7 @@ namespace TeknoMarketim.MvcUI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("~/");
+            return RedirectToAction("Index", "HomePage");
         } 
 
         public IActionResult AccessDenied()

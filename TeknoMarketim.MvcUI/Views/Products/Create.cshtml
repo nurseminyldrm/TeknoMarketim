@@ -1,0 +1,43 @@
+﻿@using ExampleCompanyApp.Core.Dtos
+@model ProductDto
+
+@{
+    ViewData["Title"] = "Yeni Ürün Ekle";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4>Yeni Ürün Ekle</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-3">
+                    <label class="control-label">Ürün Adı</label>
+                    <input asp-for="Name" class="form-control" placeholder="Örn: Akıllı Telefon" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label">Fiyat</label>
+                    <input asp-for="Price" type="number" step="0.01" class="form-control" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label">Stok Adedi</label>
+                    <input asp-for="Stock" type="number" class="form-control" />
+                </div>
+
+                @* Kategori ID'si için şimdilik manuel bir input koyalım (Örn: 1 yazabilirsin) *@
+                <div class="form-group mb-3">
+                    <label class="control-label">Kategori ID</label>
+                    <input asp-for="CategoryId" type="number" class="form-control" />
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

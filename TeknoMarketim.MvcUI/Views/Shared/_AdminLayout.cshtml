@@ -29,8 +29,11 @@
         <div class="content-wrapper">
             <section class="content">
                 <div class="container-fluid">
-                    @* 'row' etiketini kaldırıp direkt RenderBody koyarsan AdminLTE kartı tüm genişliği kaplar *@
-                    @RenderBody()
+                    <div class="row">
+                        <div class="col-12">
+                            @RenderBody()
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

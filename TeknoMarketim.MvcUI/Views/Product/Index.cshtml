@@ -7,18 +7,20 @@
 }
 
 
-<div class="col-md-12 mb-4 mt-3 ml-1">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="ml-1" style="color: #004284; font-weight: bold;">Teknoloji Ürünleri</h2>
-        <a class="btn btn-primary" style="width:130px;" asp-controller="Product" asp-action="Create">
-            Yeni Ürün <i style="margin-left:5px" class="fas fa-plus"></i>
-        </a>
+<div class="card mt-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title" style="color: #004284; font-weight: bold;">Teknoloji Ürünleri</h3>
+        <div class="card-tools ml-auto">
+            <a class="btn btn-primary btn-sm" asp-controller="Product" asp-action="Create">
+                Yeni Ürün <i class="fas fa-plus"></i>
+            </a>
+        </div>
     </div>
 
-
+<div class="card-body shadow">
     @if (Model.Products.Count > 0)
     {
-        <table id="tb12" class="mt-3 table table-bordered table-striped w-100">
+        <table id="tb12" class="table table-bordered table-striped responsive nowrap w-100">
 
             <thead class="thead-dark">
                 <tr>
@@ -44,37 +46,36 @@
                         <td>
                             <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">@item.Id</a>
                         </td>
+
+                        <td>
+                            <img src="@item.ImageUrl" style="width:50px; height:50px; object-fit:cover;" />
+                        </td>
+
                         <td>
                             <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">@item.Name</a>
                         </td>
+
                         <td>
                             <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">@item.Brand</a>
                         </td>
+
                         <td>
                             <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">@item.Price</a>
                         </td>
+
                         <td>
                             <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">@item.DiscountedPrice</a>
                         </td>
+
                         <td>
                             <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">@item.StockQuantity</a>
                         </td>
 
                     </tr>
-
-
-
                 }
-
-
             </tbody>
-
-
         </table>
-
-
     }
-
     else
     {
         <div class="alert alert-warning">
@@ -82,13 +83,31 @@
             <p>Sistemde henüz satışa sunulmuş bir teknolojik cihaz bulunmuyor.</p>
         </div>
     }
-
-
-
+    </div>
 </div>
 
 
+@section Scrpts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            if ( ! $.fn.DataTable.isDataTable( '#tb12' ) ) {
+                $('#tb12').DataTable({
+                    "responsive": true,
+                    "autoWidth": false,
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Turkish.json"
+                    }
+                });
+            }
+        });
+    </script>
+}
+
+@* 
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -103,6 +122,5 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Turkish.json" // Tabloyu Türkçe yapar
             }
         });
-    });
 
-</script>
+</script>   *@
